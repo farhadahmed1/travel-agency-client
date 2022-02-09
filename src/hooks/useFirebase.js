@@ -1,83 +1,66 @@
-import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import {
+    getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup,
+    signOut
+} from "@firebase/auth";
 import { useEffect, useState } from "react";
-import initializeAuthentication from './../firebase/firebase.init';
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+import initializeAuthentication from "../firebase/firebase.init";
 
-
-
-// init firebase authentication
-
+// this hook is for firebase authentication
 initializeAuthentication();
 
-
 const useFirebase = () => {
+    const auth = getAuth();
     const [isLoading, setIsLoading] = useState(true)
     const [user, setUser] = useState({});
 
-    const auth = getAuth();
-    const googleProvider = new GoogleAuthProvider();
-
-    // sign  in with google 
-    const signInWithGoogle = () => {
-        setIsLoading(true);
-        return signInWithPopup(auth, googleProvider)
-
-
-    }
-
-    // updata user  on state
-
+    //update user on state change
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-
             if (user) {
                 setUser(user);
-            }
-            else {
+            } else {
                 setUser("");
             }
             setIsLoading(false)
         });
-
     }, [auth, user, isLoading]);
 
-
-
-    const logout = () => {
+    //function for sign in with google
+    const signInWithGoogle = () => {
         setIsLoading(true)
-        signOut(auth)
-            .then(() => {
+        const googleProvider = new GoogleAuthProvider();
+        return signInWithPopup(auth, googleProvider)
+    };
 
-                setUser({})
-                Swal.fire({
-                    icon: 'success',
-                    title: "Logged Out",
-                    text: "You Successfully Logged Out"
-                })
-
+    // this function is for log out
+    const logOut = () => {
+        setIsLoading(true)
+        signOut(auth).then(() => {
+            setUser({})
+            Swal.fire({
+                icon: 'success',
+                title: 'Logged Out',
+                text: 'Yor Logged Out Successfully',
             })
-            .catch((error) => {
-
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Something Went Wrong',
-                    text: error.message,
-                })
-            }).finally(() => {
-                setIsLoading(false)
-            });
+        }).catch((error) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Something Went Wrong',
+                text: error.message,
+            })
+        }).finally(() => {
+            setIsLoading(false)
+        });
 
     }
-
-
     return {
         user,
-        setIsLoading,
         setUser,
-        logout,
+        signInWithGoogle,
+        logOut,
         isLoading,
-        signInWithGoogle
-
+        setIsLoading
     }
 };
 

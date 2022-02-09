@@ -9,20 +9,24 @@ import Services from './Components/Services/Services';
 import TopSection from './Components/TopSection/TopSection';
 import Home from './Pages/Home/Home';
 import Login from './Components/Login/Login';
+import AuthProvider from './Context/AuthProvider';
+
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <TopSection />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='home' element={<Home />} />
-        <Route path='services' element={<Services />} />
-        <Route path='login' element={<Login />} />
-      </Routes>
-      <Footer />
+    <AuthProvider>
+      <BrowserRouter>
+        <TopSection />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='home' element={<Home />} />
+          <Route path='services' element={<Services />} />
+          <Route path='login' element={<Login />} />
+        </Routes>
+        <Footer />
 
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   );
 };
 

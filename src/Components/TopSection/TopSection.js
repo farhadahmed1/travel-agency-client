@@ -2,6 +2,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom';
+import useAuth from './../../hooks/useAuth';
 
 
 // const navigation = [
@@ -17,6 +18,10 @@ function classNames(...classes) {
 
 
 const TopSection = () => {
+
+    const { user, logOut } = useAuth();
+    console.log(user);
+    //console.log(user.photoURL);
     return (
         <Disclosure as="nav" className="bg-gray-900">
             {({ open }) => (
@@ -57,6 +62,28 @@ const TopSection = () => {
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
                                             <Link to="/services">Services</Link>
                                         </div>
+                                        <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
+                                            {user?.email ?
+                                                <Link
+                                                    onClick={logOut}
+                                                    to="/home"
+
+                                                >
+
+                                                </Link>
+                                                : <Link
+                                                    to="/login"
+
+                                                >
+                                                    LogIn
+
+                                                </Link>
+
+                                            }
+                                        </div>
+
+
+
 
                                         {/* {navigation.map((item) => (
                                             <a
@@ -90,7 +117,7 @@ const TopSection = () => {
                                             <span className="sr-only">Open user menu</span>
                                             <img
                                                 className="h-8 w-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                src={user.photoURL}
                                                 alt=""
                                             />
                                         </Menu.Button>
@@ -107,12 +134,12 @@ const TopSection = () => {
                                         <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <Link
-                                                        to="/user"
+                                                    <div
+
                                                         className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                     >
-                                                        Your Profile
-                                                    </Link>
+                                                        {user.displayName}
+                                                    </div>
                                                 )}
                                             </Menu.Item>
                                             <Menu.Item>
@@ -126,14 +153,25 @@ const TopSection = () => {
                                                 )}
                                             </Menu.Item>
                                             <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="/login"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                {user?.email ?
+                                                    <Link className='block px-4 py-2 text-sm text-gray-700'
+                                                        onClick={logOut}
+                                                        to="/login"
+
                                                     >
-                                                        Sign out
-                                                    </a>
-                                                )}
+                                                        LogOut
+                                                    </Link>
+                                                    : <Link className='block px-4 py-2 text-sm text-gray-700'
+                                                        to="/login"
+
+                                                    >
+                                                        LogIn
+                                                    </Link>
+
+                                                }
+                                                {/* {({ active }) => (
+                                                   
+                                                )} */}
                                             </Menu.Item>
                                         </Menu.Items>
                                     </Transition>
