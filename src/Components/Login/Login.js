@@ -1,15 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from './../../hooks/useAuth';
 
 const Login = () => {
     const { setUser, signInWithGoogle, setIsLoading } = useAuth() || {};
 
+    const navigate = useNavigate();
+
     const handleClick = () => {
         signInWithGoogle()
             .then((result) => {
-
                 setUser(result.user)
+                navigate('/')
                 Swal.fire({
                     icon: 'success',
                     title: 'Greate Job',

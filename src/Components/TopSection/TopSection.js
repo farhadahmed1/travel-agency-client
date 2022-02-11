@@ -1,16 +1,11 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom';
 import useAuth from './../../hooks/useAuth';
 
 
-// const navigation = [
-//     { name: 'Dashboard', href: '#', current: true },
-//     { name: 'Team', href: '#', current: false },
-//     { name: 'Projects', href: '#', current: false },
-//     { name: 'Calendar', href: '#', current: false },
-// ]
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -20,7 +15,7 @@ function classNames(...classes) {
 const TopSection = () => {
 
     const { user, logOut } = useAuth();
-    console.log(user);
+    // console.log(user);
     //console.log(user.photoURL);
     return (
         <Disclosure as="nav" className="bg-gray-900">
@@ -60,7 +55,7 @@ const TopSection = () => {
                                             <Link to="/home">Home</Link>
                                         </div>
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
-                                            <Link to="/services">Services</Link>
+                                            <Link to="/tours">Tours</Link>
                                         </div>
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
                                             {user?.email ?
@@ -115,11 +110,19 @@ const TopSection = () => {
                                     <div>
                                         <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                                             <span className="sr-only">Open user menu</span>
-                                            <img
-                                                className="h-8 w-8 rounded-full"
-                                                src={user.photoURL}
-                                                alt=""
-                                            />
+                                            {user?.email ?
+                                                <img
+                                                    className="h-8 w-8 rounded-full"
+                                                    src={user.photoURL}
+                                                    alt=""
+                                                /> :
+                                                <img
+                                                    className="h-8 w-8 rounded-full"
+                                                    src="https://i.ibb.co/Jqfxm45/man-icon.png"
+                                                    alt=""
+                                                />
+                                            }
+
                                         </Menu.Button>
                                     </div>
                                     <Transition
@@ -188,8 +191,11 @@ const TopSection = () => {
                                 <Link to="/home">Home</Link>
                             </div>
                             <div className='px-3 py-2 rounded-md text-xl font-medium text-white'>
-                                <Link to="/services">Services</Link>
+                                <Link to="/tours">Tours</Link>
                             </div>
+                            {/* <div className='px-3 py-2 rounded-md text-xl font-medium text-white'>
+                                <Link to="/tours">Tours</Link>
+                            </div> */}
                             {/* {navigation.map((item) => (
                                 <Disclosure.Button
                                     key={item.name}

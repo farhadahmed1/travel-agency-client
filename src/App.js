@@ -5,11 +5,11 @@ import {
   Route
 } from "react-router-dom";
 import Footer from './Components/Footer/Footer';
-import Services from './Components/Services/Services';
 import TopSection from './Components/TopSection/TopSection';
 import Home from './Pages/Home/Home';
 import Login from './Components/Login/Login';
 import AuthProvider from './Context/AuthProvider';
+import AllTours from './Components/AllTours/AllTours';
 
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='home' element={<Home />} />
-          <Route path='services' element={<Services />} />
+          <Route path='tours' element={<AllTours />} />
           <Route path='login' element={<Login />} />
         </Routes>
         <Footer />
