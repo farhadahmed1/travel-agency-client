@@ -22,7 +22,7 @@ const TopSection = () => {
             {({ open }) => (
                 <>
                     <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-                        <div className="relative flex items-center justify-between h-16">
+                        <div className="relative flex items-center justify-between h-24">
                             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                                 {/* Mobile menu button*/}
                                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -37,7 +37,7 @@ const TopSection = () => {
                             </div>
                             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                                 <div className="flex-shrink-0 flex items-center">
-                                    <img
+                                    {/* <img
                                         className="block lg:hidden h-8 w-auto"
                                         src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                                         alt="Workflow"
@@ -46,7 +46,8 @@ const TopSection = () => {
                                         className="hidden lg:block h-8 w-auto"
                                         src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
                                         alt="Workflow"
-                                    />
+                                    /> */}
+                                    <h2 className="text-3xl px-6 text-tomato font-semibold">HOLIDAY HYPE</h2>
                                 </div>
                                 <div className="hidden sm:block sm:ml-6">
                                     <div className="flex space-x-4">
@@ -56,6 +57,9 @@ const TopSection = () => {
                                         </div>
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
                                             <Link to="/tours">Tours</Link>
+                                        </div>
+                                        <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
+                                            <Link to="/addTours">AddTours</Link>
                                         </div>
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
                                             {user?.email ?
@@ -112,12 +116,12 @@ const TopSection = () => {
                                             <span className="sr-only">Open user menu</span>
                                             {user?.email ?
                                                 <img
-                                                    className="h-8 w-8 rounded-full"
+                                                    className="h-12 w-12 rounded-full"
                                                     src={user.photoURL}
                                                     alt=""
                                                 /> :
                                                 <img
-                                                    className="h-8 w-8 rounded-full"
+                                                    className="h-12 w-12 rounded-full"
                                                     src="https://i.ibb.co/Jqfxm45/man-icon.png"
                                                     alt=""
                                                 />

@@ -9,7 +9,7 @@ const Tours = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        fetch('./toureData.json')
+        fetch(`http://localhost:5000/tours`)
             .then(res => res.json())
             .then(data => {
 

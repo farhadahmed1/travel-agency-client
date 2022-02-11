@@ -1,6 +1,7 @@
 import { faClock, faMap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SingleTour = ({ tourData }) => {
     const { destination, price, location, time, img, _id, description } = tourData
@@ -26,7 +27,9 @@ const SingleTour = ({ tourData }) => {
                     </div>
                 </div>
                 <p className="text-gray-600">{description}</p>
-                <div className="text-center mt-5"><button className="btn-1">Book</button></div>
+                <div className="text-center mt-5"><button className="btn-1">
+                    <Link to={`/details/${_id}`}>See More </Link>
+                </button></div>
             </div>
         </div>
     );
