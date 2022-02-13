@@ -62,6 +62,9 @@ const TopSection = () => {
                                             <Link to="/addTours">AddTours</Link>
                                         </div>
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
+                                            <Link to="/mybooking">Mybooking</Link>
+                                        </div>
+                                        <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
                                             {user?.email ?
                                                 <Link
                                                     onClick={logOut}

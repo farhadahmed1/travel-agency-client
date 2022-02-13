@@ -13,6 +13,7 @@ import AllTours from './Components/AllTours/AllTours';
 import AddTours from './Components/AddTours/AddTours';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Details from './Components/Details/Details';
+import MyBooking from './Components/MyBooking/MyBooking';
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='home' element={<Home />} />
           <Route path='tours' element={<AllTours />} />
+          <Route path='mybooking' element={<MyBooking />} />
           <Route path='details/:detailsId' element={<PrivateRoute> <Details /></PrivateRoute>} />
           <Route path='addTours' element={<PrivateRoute><AddTours /></PrivateRoute>} />
           <Route path='login' element={<Login />} />
