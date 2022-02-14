@@ -14,6 +14,7 @@ import AddTours from './Components/AddTours/AddTours';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Details from './Components/Details/Details';
 import MyBooking from './Components/MyBooking/MyBooking';
+import ManageBookings from './Components/ManageBooking/ManageBookings';
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='home' element={<Home />} />
           <Route path='tours' element={<AllTours />} />
           <Route path='mybooking' element={<MyBooking />} />
+          <Route path='managebooking' element={<ManageBookings />} />
           <Route path='details/:detailsId' element={<PrivateRoute> <Details /></PrivateRoute>} />
           <Route path='addTours' element={<PrivateRoute><AddTours /></PrivateRoute>} />
           <Route path='login' element={<Login />} />

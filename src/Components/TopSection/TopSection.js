@@ -62,7 +62,10 @@ const TopSection = () => {
                                             <Link to="/addTours">AddTours</Link>
                                         </div>
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
-                                            <Link to="/mybooking">Mybooking</Link>
+                                            <Link to="/mybooking">booking</Link>
+                                        </div>
+                                        <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
+                                            <Link to="/managebooking">Manag</Link>
                                         </div>
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
                                             {user?.email ?
