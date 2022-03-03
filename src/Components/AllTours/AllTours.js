@@ -17,7 +17,7 @@ const AllTours = () => {
                 setIsLoading(false)
             })
     }, [])
-    console.log(tour);
+    // console.log(tour);
 
     // spinner 
     if (isLoading) {

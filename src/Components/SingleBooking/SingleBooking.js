@@ -4,8 +4,8 @@ import React from 'react';
 
 const SingleBooking = ({ data, handleClick }) => {
 
-    //console.log(data.tour);
-    const { date, status, tour, address, _id } = data
+    console.log(data);
+    const { date, status, tour, _id } = data
     const { destination, location, time, img } = tour
     return (
         <div className="card">
@@ -16,7 +16,8 @@ const SingleBooking = ({ data, handleClick }) => {
             <div className="p-10">
                 <h2 className="text-2xl font-bold">{destination}</h2>
                 <p className="my-3"><span className="font-semibold">Date : </span>{date} </p>
-                <p className="my-3"><span className="font-semibold">Address : </span>{address} </p>
+                <p className="my-3"><span className="font-semibold">Address : </span>{location} </p>
+                <p className="my-3"><span className="font-semibold">Time : </span>{time}</p>
                 <p className="my-3">Status : <span className={status === 'pending' ? 'px-3 py-2 rounded-full bg-tomato text-white' : 'p-2  rounded-full bg-green-200 text-green-600'}>
                     {status}
                 </span></p>
@@ -34,7 +35,7 @@ const SingleBooking = ({ data, handleClick }) => {
                     </div>
                 </div>
 
-                <div className="text-center" onClick={() => handleClick(_id)}><button className="btn-2" >Cancel Booking</button></div>
+                <div className="text-center" onClick={() => handleClick(_id)}><button className="btn-1" >Cancel</button></div>
             </div>
         </div>
     );

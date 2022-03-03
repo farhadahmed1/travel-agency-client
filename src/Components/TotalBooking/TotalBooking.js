@@ -1,8 +1,8 @@
 import React from 'react';
 
 const TotalBooking = ({ booking, handleUpdateStatus, handleDelete }) => {
-    const { _id, name, email, tour, date, status, img } = booking
-    console.log(booking.img);
+    const { _id, name, address, contuct, email, tour, date, status, img } = booking
+    console.log(booking);
     return (
         <div className="card text-md " key={_id}>
             <div className="md:flex block justify-between  items-center  p-5">
@@ -17,7 +17,9 @@ const TotalBooking = ({ booking, handleUpdateStatus, handleDelete }) => {
             <hr />
             <div className="p-5">
                 <p className="text-2xl font-semibold  "> {tour.destination}</p>
-                <p className="my-3">Date : {date}</p>
+                <p className="my-3">Address : {address}</p>
+                <p className="my-3">Contact : {date}</p>
+                <p className="my-3">Date : {contuct}</p>
                 <p className="my-3">Status : <span className={status === 'pending' ? 'px-3 py-2 rounded-full bg-tomato text-white' : 'p-2  rounded-full bg-green-200 text-green-600'}>
                     {status}
                 </span></p>

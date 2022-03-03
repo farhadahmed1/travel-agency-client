@@ -15,7 +15,7 @@ function classNames(...classes) {
 const TopSection = () => {
 
     const { user, logOut } = useAuth();
-    // console.log(user);
+    console.log(user);
     //console.log(user.photoURL);
     return (
         <Disclosure as="nav" className="bg-gray-900">
@@ -59,13 +59,14 @@ const TopSection = () => {
                                             <Link to="/tours">Tours</Link>
                                         </div>
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
+                                            <Link to="/mybooking">My Booking</Link>
+                                        </div>
+                                        <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
                                             <Link to="/addTours">AddTours</Link>
                                         </div>
+
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
-                                            <Link to="/mybooking">booking</Link>
-                                        </div>
-                                        <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
-                                            <Link to="/managebooking">Manag</Link>
+                                            <Link to="/managebooking">Manag Booking</Link>
                                         </div>
                                         <div className='px-5 py-2 rounded-md text-xl font-medium text-white'>
                                             {user?.email ?
@@ -144,14 +145,17 @@ const TopSection = () => {
                                         leaveFrom="transform opacity-100 scale-100"
                                         leaveTo="transform opacity-0 scale-95"
                                     >
-                                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-60 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <div
 
                                                         className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                     >
-                                                        {user.displayName}
+                                                        {user?.displayName}
+                                                        <br />
+                                                        {user?.email}
+
                                                     </div>
                                                 )}
                                             </Menu.Item>
